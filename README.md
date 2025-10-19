@@ -1,2 +1,2 @@
 # wollok
-Parciales viejos de wollok resueltos
+Ejercicios y parciales de wollok resueltos
