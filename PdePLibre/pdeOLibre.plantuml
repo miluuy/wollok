@@ -1,0 +1,77 @@
+@startuml
+abstract class Producto{
+    nombre
+    precioBase
+    precio()
+    precioFinal()
+    iva()
+    nombreEnOferta()
+}
+class Mueble{
+    precioFinal()
+}
+class Indumentaria{
+    esTemporadaActual
+    precioFinal()
+}
+class Ganga{
+    precioFinal()
+    nombreEnOferta()
+}
+class Cupon{
+    fueUsado
+    descuento
+    aplicarCupon()
+    fueUsado()
+    estaDisponible()
+}
+
+class NivelConLimite{
+    limiteDeProductos
+    hayEspacio()
+}
+object oro{
+    hayEspacio()
+}
+class Usuario{
+    nombre
+    dineroDisponible
+    puntos
+    nivel
+    cupones
+    productos
+    agregarAlCarrito()
+    cantidadDeProductos()
+    comprarProductosDelCarrito()
+    cuponDisponible()
+    esMoroso()
+    penalizar()
+    eliminarCuponesUsados()
+    actualizarNivel()
+    nivelCorrespondiente()
+}
+class PdePLibre{
+    productos
+    usuarios
+    castigarUsuariosMorosos()
+    eliminarCuponesUsadosDeLosUsuarios()
+    nombreDeProductosEnOfertas()
+    actualizarNivelConLimite()
+}
+
+Producto <|-- Mueble
+Producto <|-- Indumentaria
+Producto <|-- Ganga
+PdePLibre --> "productos*" Producto
+PdePLibre --> "usuarios*" Usuario
+Usuario --> "cupones*" Cupon
+Usuario --> "productos*" Producto
+
+
+interface Nivel{
+    hayEspacio()
+}
+NivelConLimite ..|> Nivel
+oro ..|> Nivel
+Usuario --> Nivel
+@enduml

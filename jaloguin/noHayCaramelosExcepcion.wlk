@@ -1,0 +1,1 @@
+class NoHayCaramelosException inherits Exception{}

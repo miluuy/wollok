@@ -1,0 +1,138 @@
+@startuml
+class Pajaro{
+    ira
+--
+    enojar()
+    fuerza()
+    esFuerte()
+    tranquilizar()
+    esHomenajeado()
+    puedeDerribar(unObstaculo)
+    lanzar(unaIsla)
+}
+
+class Red{
+    vecesQueSeEnojo
+--
+    fuerza()
+}
+
+class Bomb{
+    maximoDeFuerza
+--
+    fuerza()
+    maximoDeFuerza(unMaximo)
+}
+
+class Chuck{
+    velocidad
+--
+    fuerza()
+    enojar()
+    tranquilizar()
+}
+
+class Terence{
+    vecesQueSeEnojo
+    multiplicador
+--
+    multiplicador(unValor)
+    fuerza()
+}
+
+class Matilda{
+    pesoDeHuevosQuePuso
+--
+    fuerza()
+    fuerzaDeTodosLosHuevos()
+    enojar()
+}
+
+object islaPajaros{
+    pajaros
+--
+    pajarosFuertes()
+    fuerzaDeLaIsla()
+    sucederUnEvento(unEvento)
+    atacar(islaCerdito)
+    recuperaronHuevos(islaCerdito)
+}
+
+object manejoDeIraConMatilda{
+--
+    afectar(unosPajaros)
+}
+
+object invasionDeCerditos{
+    cantidadDeCerditosInvasores
+--
+    afectar(unosPajaros)
+    cantidadDeEnojos()
+    enojarPajaros(unosPajaros)
+}
+
+object fiestaSopresa{
+--
+    afectar(unosPajaros)
+    pajarosHomenajeados(unosPajaros)
+}
+
+object eventosDesafortunados{
+    eventos
+--
+    afectar(unosPajaros)
+    
+}
+
+object islaCerdito{
+    obstaculos
+--
+    obstaculos()
+    noTienenHuevos()
+}
+
+class Pared{
+    ancho
+    unValor
+--
+    resistencia()
+}
+class ParedDeVidrio {}
+class ParedDeMadera {}
+class ParedDePiedra {}
+
+class CerditosObreros{
+--
+    resistencia()
+}
+class CerditosArmados{
+    resistenciaDeArma
+--
+    resistencia()
+}
+Pajaro <|-- Red
+Pajaro <|-- Chuck
+Pajaro <|-- Bomb
+Pajaro <|-- Matilda
+Pajaro <|-- Terence
+islaPajaros --> "*"Pajaro
+islaCerdito --> "*" Obstaculo
+Pared <|-- ParedDeMadera
+Pared <|-- ParedDePiedra
+Pared <|-- ParedDeVidrio
+
+interface Obstaculo{
+    resistencia()
+}
+Pared ..|> Obstaculo
+CerditosArmados ..|> Obstaculo
+CerditosObreros ..|> Obstaculo
+
+
+islaPajaros ..> islaCerdito
+islaPajaros ..> manejoDeIraConMatilda
+islaPajaros ..> eventosDesafortunados
+islaPajaros ..> invasionDeCerditos
+islaPajaros ..> fiestaSopresa
+
+@enduml

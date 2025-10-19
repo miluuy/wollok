@@ -1,0 +1,87 @@
+@startuml
+class Pelicula{
+    nombre
+    elenco
+    genero
+    --
+    presupuesto()
+    sueldosDelElenco()
+    extraDel70Porciento()
+    ganancias()
+    loQueRecaudo()
+    rodarPelicula()
+    cantidadDeArtistas()
+    cantidadDeLetras()
+    esBarata()
+}
+object amateur{
+    sueldoCorrespondiente(unArtista)
+}
+object yaEstaEstablecido{
+    sueldoCorrespondiente(unArtista)
+}
+object estrella{
+    sueldoCorrespondiente(unArtista)
+}
+class Artista{
+    experiencia
+    cantidadDePeliculasQueActuo
+    ahorros
+    --
+    sueldo()
+    cantidadDePeliculasQueActuo()
+    nivelDeFama()
+    recategorizarExperiencia()
+    actuar()
+}
+
+class Genero{
+    presupuestoExtra()
+    recaudoExtra(unaPelicula)
+}
+object accion{
+    cantidadDeVidriosRotos
+    --
+    presupuestoExtra()
+    recaudoExtra(unaPelicula)
+}
+object drama{
+    recaudoExtra(unaPelicula)
+}
+object terror{
+    cantidadDeCUCHO
+    --
+    recaudoExtra(unaPelicula)
+}
+object comedia {
+    recaudoExtra(unaPelicula)
+}
+object impdep{
+    artistas
+    peliculas
+    --
+    elArtistaMejorPagado()
+    peliculasEconomicas()
+    gananciasDePeliculasEconomicas()
+    recategorizarArtistas()
+}
+
+impdep --> "artistas*" Artista
+impdep --> "peliculas*" Pelicula
+Pelicula --> "elenco*" Artista
+Genero <|-- drama
+Genero <|-- terror
+Genero <|-- comedia
+Genero <|-- accion
+Pelicula --> Genero
+Artista-->Experiencia
+interface Experiencia{
+    sueldoCorrespondiente(unArtista)
+}
+amateur ..|> Experiencia
+yaEstaEstablecido ..|> Experiencia
+estrella ..|> Experiencia
+
+Experiencia ..> Artista
+Genero ..> Pelicula
+@enduml

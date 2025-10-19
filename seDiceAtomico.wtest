@@ -1,0 +1,27 @@
+import seDiceAtomico.*
+
+describe "Pruebas de Springfield" {
+    test "A.valor inicial esperado de produccion energetica de burns"{
+        burns.cantidadDeVarillas(10)
+        assert.equals(1,burns.produccionEnergetica())
+    }
+    test "B.valor inicial esperado de produccion energetica de exBosque"{
+        exBosque.capacidad(20)
+        assert.equals(18.5,exBosque.produccionEnergetica())
+    }
+    test "C.valor inicial esperado de produccion energetica de elSuspiro"{
+        assert.equals(2,elSuspiro.produccionEnergetica())
+    }
+    test "D.centrales contaminantes de springfield"{
+        springfield.centralesEnergeticas().clear()
+        springfield.centralesEnergeticas().add(exBosque)
+        assert.equals(#{exBosque},springfield.centralesContaminantes())
+    }
+    test "E.springfiel cubrio la necesidad energetica"{
+        assert.that(springfield.cubrioNecesidadEnergetica(20))
+    }
+    test "F.springfield está en el horno"{
+        //springfield.cubrioNecesidadEnergetica(30)
+        assert.that(springfield.estaEnElHorno(30))
+    }
+}

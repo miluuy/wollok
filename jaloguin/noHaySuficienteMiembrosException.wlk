@@ -1,0 +1,1 @@
+class NoHaySuficientesMiembrosException inherits Exception{}

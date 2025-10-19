@@ -1,0 +1,77 @@
+@startuml
+class Niño{
+    elementos
+    actitud
+    --
+    cantidadDeCaramelos
+    capacidadDeAsustar()
+    sustosDeElementos()
+    asustarAUnAdulto(unaPersona)
+    aumentarCaramelos(unaCantidad)
+    tieneMasCaramelosQue(unaCantidad)
+    cantidadDeCaramelos()
+    elementos()
+    comerCaramelos(unaCantidad)
+
+}
+Class Maquillaje{
+    susto
+    --
+    susto()
+}
+Class Traje{
+    esTierno
+    --
+    esTierno()
+    susto()
+}
+interface Elemento{
+    susto()
+}
+
+class AdultoComun{
+    muchachosQueIntentarionAsustarlo
+    --
+    seAsusta(unNiño)
+    darCaramelos()
+    tolerancia()
+    muchachosConCaramelosQueIntentaronAsustarlo()
+}
+class Abuelo{
+    seAsusta()
+    darCaramelos()
+}
+class AdultoNecio{
+    seAsusta()
+}
+interface Adulto{
+    seAsusta()
+}
+class Legion{
+    miembros
+    --
+    capacidadDeAsustar()
+    cantidadDeCaramelos()
+    asustarAUnAdulto(unaPersona)
+    lider()
+    crearLegion(unosNiños)
+}
+class Barrio{
+    niños
+    --
+    tresNiñosConLaMayorCantidadDeCaramelos()
+    niñosOrdenadosPorMayorCantidadDeCaramelos()
+    elementosUsados()
+    tienenMuchosCaramelos()
+} 
+Legion --> "*"Niño
+Niño--> "*"Elemento
+maquillaje..|> Elemento
+traje ..|> Elemento
+AdultoComun ..|>  Adulto
+AdultoNecio ..|> Adulto
+Legion..>Adulto
+Niño..>Adulto
+Barrio-->"*"Niño
+AdultoComun<|--Abuelo
+@enduml
